@@ -83,6 +83,18 @@ def post_share(request, post_id):
         form = EmailPostForm()
     return render(request, 'blog/post/share.html', {'post': post, 'form': form, 'sent': sent})
 
+# def post_search(request):
+#     form = SearchForm()
+#     if 'query' in request.GET:
+#         form = SearchForm(request.GET)
+#         if form.is_valid():
+#             cd = form.cleaned_data
+#             results = SearchQuerySet().models(Post).filter(content=cd['query']).load_all()
+#             # count total results
+#             total_results = results.count()
+#
+#     return render(request, 'blog/post/search.html',{'form': form,'cd': cd, 'results': results, 'total_results': total_results})
+
 def post_search(request):
     form = SearchForm()
     if 'query' in request.GET:
@@ -92,5 +104,7 @@ def post_search(request):
             results = SearchQuerySet().models(Post).filter(content=cd['query']).load_all()
             # count total results
             total_results = results.count()
-
-    return render(request, 'blog/post/search.html',{'form': form,'cd': cd, 'results': results, 'total_results': total_results})
+    return render(request, 'blog/post/search.html', {'form': form,
+                                                     'cd': cd,
+                                                     'results': results,
+                                                     'total_results': total_results})
