@@ -25,7 +25,7 @@ SECRET_KEY = '&uiud7b(qgad7lef*sx2#n6(uys$2^9sj9+%n_=&z0+=$(9=q&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.1.39']
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'taggit',
+    'haystack',
 ]
 
 MIDDLEWARE = [
@@ -126,3 +127,10 @@ EMAIL_HOST_USER = 'tai94bn@gmail.com'
 EMAIL_HOST_PASSWORD = 'relax1994'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
+        'URL': 'http://192.169.1.139:8000/solr/blog'
+    },
+}
